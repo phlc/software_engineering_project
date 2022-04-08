@@ -1,3 +1,5 @@
+import { Menu } from "../../Components/Menu/Menu"
+
 export const Home = () => {
-    return (<h1>Hello Home</h1>)
+    return (<Menu/>)
 }

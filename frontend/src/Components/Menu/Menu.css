@@ -1,0 +1,20 @@
+.menu-container {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: end;
+    padding: 0px;
+}
+
+.menu-container div {
+    width: 50%;
+    margin: 0px;
+}
+
+.login-tab {
+    display: flex;
+}
+
+.login-tab span {
+    margin-left: 8px;
+}
