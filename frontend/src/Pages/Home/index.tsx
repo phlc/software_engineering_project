@@ -1,5 +1,6 @@
 import { Menu } from "../../Components/Menu/Menu"
 import { Book } from "../../types"
+import Header from "../Header"
 import Releases from "../Releases"
 import { Background } from "./styles"
 
@@ -76,6 +77,7 @@ export default function Home () {
     return (
         <Background>
             <Menu/>
+            <Header />
             <Releases books={bookMock} />
         </Background>
     )
