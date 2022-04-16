@@ -4,13 +4,14 @@ import '../../assets/fonts/Fonts.css';
 export const Container = styled.section`
     display: flex;
     flex-direction: column;
+    padding: 30px;
 `;
 
 export const SectionTitle = styled.text`
     display: flex;
     font-family: 'Montserrat-bold';
     font-size: 28px;
-    margin: 30px;
+    margin-bottom: 30px;
 `;
 
 export const Row = styled.div`

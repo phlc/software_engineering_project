@@ -7,4 +7,6 @@ export type Book = {
     price: number;
     stock: number;
     category: string;
+    releaseDate: string;
+    isRelease: boolean;
 }
