@@ -9,14 +9,14 @@ type ReleasesProps = {
 export default function Releases({
     books
 }: ReleasesProps) {
+    const releaseBooks = books.filter((book) => book.isRelease);
 
     return(
         <Container>
             <SectionTitle>Lançamentos</SectionTitle>
             <Row>
-                {books.map((book) => <BookCard book={book} />)}
+                {releaseBooks.map((book) => <BookCard book={book} />)}
             </Row>
-
         </Container>
     )
 }
