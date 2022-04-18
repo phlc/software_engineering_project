@@ -5,6 +5,7 @@ export const Container = styled.section`
     display: flex;
     flex-direction: column;
     padding: 70px 30px;
+    background-color: #EFEFEF;
 `;
 
 export const SectionTitle = styled.text`
