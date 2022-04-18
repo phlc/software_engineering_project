@@ -4,7 +4,7 @@ import '../../assets/fonts/Fonts.css';
 export const Container = styled.section`
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 70px 30px;
 `;
 
 export const SectionTitle = styled.text`
@@ -19,6 +19,10 @@ export const Row = styled.div`
     flex-direction: row;
 `;
 
-export const Button = styled.button`
-
+export const Button = styled.a`
+    font-family: 'Montserrat-bold';
+    font-size: 16px;
+    margin-top: 30px;
+    margin-right: 30px;
+    align-self: flex-end;
 `;
