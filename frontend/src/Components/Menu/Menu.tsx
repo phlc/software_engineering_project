@@ -4,7 +4,13 @@ import { useCallback, useState } from 'react'
 
 import './Menu.css'
 
-export const Menu = () => {
+type MenuProps = {
+    style?: any;
+}
+
+export const Menu = ({
+    style
+}: MenuProps) => {
     const [pageSelected, setTableSected] = useState(0)
 
     const handleChange = useCallback((e: React.ChangeEvent<{}>, newValue: number) => {
@@ -12,7 +18,7 @@ export const Menu = () => {
     },[])
 
     return(
-        <div className="menu-container">
+        <div className="menu-container" style={style}>
             <Tabs value={pageSelected} onChange={handleChange}>
                 <Tab label="Lançamentos"/>
                 <Tab label="Favoritos"/>
