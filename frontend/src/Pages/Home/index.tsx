@@ -76,7 +76,6 @@ export default function Home () {
 
     return (
         <Background>
-            {/* <Menu/> */}
             <Header />
             <Releases books={bookMock} />
         </Background>
