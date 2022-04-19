@@ -1,4 +1,5 @@
 export type Book = {
+    id: number;
     coverURL: string;
     rate: number;
     title: string;
