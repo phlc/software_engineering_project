@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 type BookCardProps = {
     book: Book;
-    
 };
 
 export default function BookCard ({
