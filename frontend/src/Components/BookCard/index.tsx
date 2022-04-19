@@ -1,4 +1,3 @@
-import React from 'react';
 import { Book } from '../../types';
 import { BoldText, Container, CoverImage, DetailsView, Row, TitleText,  } from './styles';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';

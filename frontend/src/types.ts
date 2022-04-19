@@ -10,4 +10,16 @@ export type Book = {
     category: string;
     releaseDate: string;
     isRelease: boolean;
+    isFavorite: boolean;
+};
+
+export type User = {
+    email: string;
+    password: string;
+};
+
+export type UserCart = {
+    user: User;
+    items: Book[];
+    total: number;
 }

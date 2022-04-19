@@ -70,6 +70,9 @@ export const SinopseContainer = styled.section`
     text-align: left;
     background-color: #FFFFFF;
     border-radius: 10px;
+    -webkit-box-shadow: 1px 1px 2px #9E9E9E;
+    -moz-box-shadow: 1px 1px 2px #9E9E9E;
+    box-shadow: 1px 1px 2px #9E9E9E;
 `;
 
 export const LinkStyle = {
