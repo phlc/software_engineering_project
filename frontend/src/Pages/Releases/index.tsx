@@ -1,15 +1,12 @@
 import BookCard from "../../Components/BookCard";
 import { Book } from "../../types";
+import { bookMock } from "../../__mock__/mock";
 import { Button, Container, Row, SectionTitle } from "./styles";
 
-type ReleasesProps = {
-    books: Book[];
-};
+export default function Releases() {
+    //chamar api para obter livros. por enquanto usando objeto mockado
 
-export default function Releases({
-    books
-}: ReleasesProps) {
-    const releaseBooks = books.filter((book) => book.isRelease);
+    const releaseBooks = bookMock.filter((book: Book) => book.isRelease);
 
     return(
         <Container>
@@ -19,5 +16,5 @@ export default function Releases({
             </Row>
             <Button>Ver todos</Button>
         </Container>
-    )
+    );
 }

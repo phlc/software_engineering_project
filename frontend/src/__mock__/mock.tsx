@@ -1,6 +1,7 @@
 import { Book } from "../types";
 
 export const bookMock: Book[] = [{
+    id: 1,
     coverURL: 'https://m.media-amazon.com/images/I/5144Ghp-b8L.jpg',
     rate: 4,
     title: 'A sutil arte de ligar o foda-se',
@@ -11,7 +12,9 @@ export const bookMock: Book[] = [{
     category: 'Auto Ajuda',
     releaseDate: '20/01/1995',
     isRelease: true,
+    isFavorite: false
 },{
+    id: 2,
     coverURL: 'https://m.media-amazon.com/images/I/5144Ghp-b8L.jpg',
     rate: 4,
     title: 'A sutil arte de ligar o foda-se',
@@ -22,7 +25,9 @@ export const bookMock: Book[] = [{
     category: 'Auto Ajuda',
     releaseDate: '20/01/1995',
     isRelease: true,
+    isFavorite: false
 },{
+    id: 3,
     coverURL: 'https://m.media-amazon.com/images/I/5144Ghp-b8L.jpg',
     rate: 4,
     title: 'A sutil arte de ligar o foda-se',
@@ -33,7 +38,9 @@ export const bookMock: Book[] = [{
     category: 'Auto Ajuda',
     releaseDate: '20/01/1995',
     isRelease: true,
+    isFavorite: false
 },{
+    id: 4,
     coverURL: 'https://m.media-amazon.com/images/I/5144Ghp-b8L.jpg',
     rate: 4,
     title: 'A sutil arte de ligar o foda-se',
@@ -44,7 +51,9 @@ export const bookMock: Book[] = [{
     category: 'Auto Ajuda',
     releaseDate: '20/01/1995',
     isRelease: true,
+    isFavorite: false
 },{
+    id: 5,
     coverURL: 'https://m.media-amazon.com/images/I/5144Ghp-b8L.jpg',
     rate: 4,
     title: 'A sutil arte de ligar o foda-se',
@@ -55,7 +64,9 @@ export const bookMock: Book[] = [{
     category: 'Auto Ajuda',
     releaseDate: '20/01/1995',
     isRelease: true,
+    isFavorite: false
 },{
+    id: 6,
     coverURL: 'https://m.media-amazon.com/images/I/5144Ghp-b8L.jpg',
     rate: 4,
     title: 'A sutil arte de ligar o foda-se',
@@ -66,4 +77,5 @@ export const bookMock: Book[] = [{
     category: 'Auto Ajuda',
     releaseDate: '20/01/1995',
     isRelease: true,
+    isFavorite: false
 }];
