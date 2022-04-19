@@ -7,3 +7,8 @@
     font-family: 'Montserrat-Bold';
     src: local('Montserrat-Bold'), url('./Montserrat-Bold.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: local('Montserrat-Medium'), url('./Montserrat-Medium.ttf') format('truetype');
+}
