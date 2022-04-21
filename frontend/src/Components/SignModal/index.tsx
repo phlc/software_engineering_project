@@ -16,7 +16,7 @@ export interface SignModalProps {
 export const SignModal = ({showBody}: SignModalProps) => {
     return (
         <Container>
-            <div> <MenuBookTwoTone fontSize="large"/> </div>
+            <div> <MenuBookTwoTone fontSize="medium"/> </div>
            <FormContainer>
                 {
                     (showBody === ShowSignModalType.SIGNIN) 

@@ -5,7 +5,7 @@ export const SignIn = () => {
         <>
             <form>
                 <InputContainer>
-                    <label>Email</label>
+                    <label>Email:</label>
                     <input/>
                 </InputContainer>
                 <InputContainer>
