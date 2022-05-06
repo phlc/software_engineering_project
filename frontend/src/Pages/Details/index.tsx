@@ -4,7 +4,8 @@ import { Menu } from "../../Components/Menu/Menu";
 import { Book } from "../../types";
 import { bookMock } from "../../__mock__/mock";
 import ArrowForward from '@material-ui/icons/ArrowForward';
-import { AuthorText, Background, BookTitle, CoverImage, DetailsContainer, LinkStyle, MainContainer, Row, SectionTitle, SinopseContainer, SubText } from "./styles";
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import { AddToCartButton, AuthorText, Background, BookTitle, ButtonsView, CoverImage, DetailsContainer, FavoriteButton, LinkStyle, MainContainer, Row, SectionTitle, SinopseContainer, SubText, WhiteText } from "./styles";
 
 export default function BookDetails() {
     let params = useParams();
@@ -25,6 +26,15 @@ export default function BookDetails() {
                         <SubText>{book.description}</SubText>
                         <Link to="/sinopse" style={LinkStyle}>Ver a sinopse completa  <ArrowForward fontSize="small"style={{ marginBottom: -5}}/></Link>
                     </DetailsContainer>
+                    <ButtonsView>
+                        <AddToCartButton>
+                            <AddShoppingCartIcon style={{ color: 'white', marginRight: 5}}/>
+                            <WhiteText>Adic. ao carrinho</WhiteText>
+                        </AddToCartButton>
+                        <FavoriteButton>
+
+                        </FavoriteButton>
+                    </ButtonsView>
                 </MainContainer>
                 <SectionTitle>Mais livros de {book.author}</SectionTitle>
                 <Row>

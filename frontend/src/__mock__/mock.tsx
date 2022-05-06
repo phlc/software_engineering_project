@@ -12,7 +12,8 @@ export const bookMock: Book[] = [{
     category: 'Auto Ajuda',
     releaseDate: '20/01/1995',
     isRelease: true,
-    isFavorite: false
+    isFavorite: false,
+    rateNumber: 3
 },{
     id: 2,
     coverURL: 'https://m.media-amazon.com/images/I/5144Ghp-b8L.jpg',
@@ -25,7 +26,8 @@ export const bookMock: Book[] = [{
     category: 'Auto Ajuda',
     releaseDate: '20/01/1995',
     isRelease: true,
-    isFavorite: false
+    isFavorite: false,
+    rateNumber: 3
 },{
     id: 3,
     coverURL: 'https://m.media-amazon.com/images/I/5144Ghp-b8L.jpg',
@@ -38,7 +40,8 @@ export const bookMock: Book[] = [{
     category: 'Auto Ajuda',
     releaseDate: '20/01/1995',
     isRelease: true,
-    isFavorite: false
+    isFavorite: false,
+    rateNumber: 3
 },{
     id: 4,
     coverURL: 'https://m.media-amazon.com/images/I/5144Ghp-b8L.jpg',
@@ -51,7 +54,8 @@ export const bookMock: Book[] = [{
     category: 'Auto Ajuda',
     releaseDate: '20/01/1995',
     isRelease: true,
-    isFavorite: false
+    isFavorite: false,
+    rateNumber: 3
 },{
     id: 5,
     coverURL: 'https://m.media-amazon.com/images/I/5144Ghp-b8L.jpg',
@@ -64,7 +68,8 @@ export const bookMock: Book[] = [{
     category: 'Auto Ajuda',
     releaseDate: '20/01/1995',
     isRelease: true,
-    isFavorite: false
+    isFavorite: false,
+    rateNumber: 3
 },{
     id: 6,
     coverURL: 'https://m.media-amazon.com/images/I/5144Ghp-b8L.jpg',
@@ -77,5 +82,6 @@ export const bookMock: Book[] = [{
     category: 'Auto Ajuda',
     releaseDate: '20/01/1995',
     isRelease: true,
-    isFavorite: false
+    isFavorite: false,
+    rateNumber: 3
 }];

@@ -2,6 +2,7 @@ export type Book = {
     id: number;
     coverURL: string;
     rate: number;
+    rateNumber: number;
     title: string;
     author: string;
     description: string;
@@ -19,8 +20,14 @@ export type User = {
     password: string;
 };
 
+export type AuthenticatedUser = {
+    id: number;
+    email: string;
+    cpf: string;
+    cart: UserCart | undefined;
+}
+
 export type UserCart = {
-    user: User;
     items: Book[];
     total: number;
 }
