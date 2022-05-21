@@ -23,7 +23,9 @@ export type User = {
 export type AuthenticatedUser = {
     id: number;
     email: string;
+    name: string;
     cpf: string;
+    password: string;
     cart: UserCart | undefined;
 }
 
