@@ -1,9 +1,15 @@
 package com.LPSBookStore.LPSBookStore.Controllers;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.LPSBookStore.LPSBookStore.Entities.Book;
 import com.LPSBookStore.LPSBookStore.Repositories.BookRepository;
 
 @RestController
@@ -11,4 +17,22 @@ import com.LPSBookStore.LPSBookStore.Repositories.BookRepository;
 public class BookController {
 	@Autowired
 	private BookRepository bookRepository; 
+	
+	@PostMapping(value="/GetByTitle")
+	public List<Book> getByTitle(@RequestBody Map<String, String> request) throws Exception {
+		return bookRepository.getByTitle(request.get("title"));					
+	}
+	
+	@PostMapping(value="/GetByCategory")
+	public List<Book> getByCategory(@RequestBody Map<String, String> request) throws Exception {
+		return bookRepository.getByCategory(request.get("category"));					
+	}
+	
+	@PostMapping(value="/GetByAuthor")
+	public List<Book> getByAuthor(@RequestBody Map<String, String> request) throws Exception {
+		return bookRepository.getByAuthor(request.get("author"));					
+	}
+	
+	
+	
 }
