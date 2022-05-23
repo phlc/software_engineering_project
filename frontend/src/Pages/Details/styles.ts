@@ -75,6 +75,56 @@ export const SinopseContainer = styled.section`
     box-shadow: 1px 1px 2px #9E9E9E;
 `;
 
+export const AddToCartButton = styled.button`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #24B732;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+`;
+
+export const RemoveFromCartButton = styled.button`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #24B732;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+`;
+
+export const FavoriteButton = styled.button`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: transparent;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+`;
+
+export const ButtonsView = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+`;
+
+export const WhiteText = styled.text`
+    color: white;
+    font-family: 'Montserrat-Medium';
+    font-size: 14px;
+`;
+
+export const BlackText = styled.text`
+    color: black;
+    font-family: 'Montserrat-Bold';
+    font-size: 14px;
+`;
+
 export const LinkStyle = {
     textDecoration: 'none',
     fontFamily: 'Montserrat-Bold',

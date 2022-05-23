@@ -1,6 +1,7 @@
 package com.LPSBookStore.LPSBookStore.Controllers;
 
 import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,5 +47,9 @@ public class ClientController {
 		return "SUCCESS";			
 	}
 	
+	@GetMapping(value="/GetAll")
+    public List<Client> getAllClient() throws Exception {
+        return clientRepository.findAll();
+    }
 	
 }
