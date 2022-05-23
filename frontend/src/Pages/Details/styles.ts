@@ -119,6 +119,12 @@ export const WhiteText = styled.text`
     font-size: 14px;
 `;
 
+export const BlackText = styled.text`
+    color: black;
+    font-family: 'Montserrat-Bold';
+    font-size: 14px;
+`;
+
 export const LinkStyle = {
     textDecoration: 'none',
     fontFamily: 'Montserrat-Bold',
