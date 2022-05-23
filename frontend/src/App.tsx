@@ -1,11 +1,16 @@
+import { useState } from 'react';
 import './App.css';
 import AppRoutes from './Components/routes';
-
+import {GlobalProvider}from './Contexts/Global/Global'
 
 function App() {
+  const [ isAuthenticated,setIsAuthenticated] = useState(false)
+
   return (
     <div className="App">
-      <AppRoutes />
+      <GlobalProvider value={{ isAuthenticated,setIsAuthenticated }}>
+        <AppRoutes />
+      </GlobalProvider>
     </div>
   );
 }
