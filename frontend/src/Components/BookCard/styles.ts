@@ -22,7 +22,7 @@ export const TitleText = styled.text`
     font-size: 14px;
     text-align: left;
     display: flex;
-    margin-top: 15px;
+    margin: 15px 5px 0 5px;
 `;
 
 export const DetailsView = styled.div`
@@ -40,11 +40,16 @@ export const Row = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 10px;
+    margin: 10px 5px 0 5px;
 `;
 
 export const CoverImage = styled.img`
     width: 120px;
     height: 176px;
     align-self: center;
+`
+
+export const OcultButton = styled.button`
+    border: none;
+    background: transparent;
 `
