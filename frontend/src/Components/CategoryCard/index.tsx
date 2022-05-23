@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Container, Title } from "./styles";
 
 type CategoryCardProps = {
@@ -10,8 +11,10 @@ export default function CategoryCard({
     urlImage,
 }: CategoryCardProps) {
     return (
-        <Container style={{ backgroundImage: `url(${urlImage})` }}>
-            <Title>{name}</Title>
-        </Container>
+            <Container style={{ backgroundImage: `url(${urlImage})` }}>
+                <Link to={`/category/${name}`} style={{ textDecoration: 'none'}}>
+                    <Title>{name}</Title>
+                </Link>
+            </Container>
     );
 }
