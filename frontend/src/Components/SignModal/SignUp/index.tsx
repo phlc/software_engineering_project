@@ -4,19 +4,19 @@ export const SignUp = () => {
     return (
         <>
             <form>
-                <InputContainer>
+                <InputContainer error={false}>
                     <label>Nome</label>
                     <input/>
                 </InputContainer>
-                <InputContainer>
+                <InputContainer error={false}>
                     <label>CPF</label>
                     <input/>
                 </InputContainer>
-                <InputContainer>
+                <InputContainer error={false}>
                     <label>Email</label>
                     <input/>
                 </InputContainer>
-                <InputContainer>
+                <InputContainer error={false}>
                     <label>Senha</label>
                     <input/>
                 </InputContainer>
