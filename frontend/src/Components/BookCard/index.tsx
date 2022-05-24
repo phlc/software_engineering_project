@@ -1,9 +1,8 @@
-import { AuthenticatedUser, Book } from '../../types';
+import { Book } from '../../types';
 import { BoldText, Container, CoverImage, DetailsView, OcultButton, Row, TitleText,  } from './styles';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { getAllUsers } from '../../Api/ClientApi';
+import { useState } from 'react';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 

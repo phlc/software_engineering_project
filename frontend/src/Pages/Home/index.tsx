@@ -1,6 +1,6 @@
-import Categories from "../Categories"
-import Header from "../Header"
-import Releases from "../Releases"
+import Categories from "../../Sections/Categories"
+import Header from "../../Sections/Header"
+import Releases from "../../Sections/Releases"
 import { Background } from "./styles"
 
 export default function Home () {
