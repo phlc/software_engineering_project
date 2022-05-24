@@ -11,10 +11,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
+import com.LPSBookStore.LPSBookStore.Entities.Client;
+import com.LPSBookStore.LPSBookStore.Entities.Book;
 @Entity
-@Table(name = "FAVORITE_BOOK")
+@Table(name = "FAVORITE_BOOKS")
 public class FavoriteBooks {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,4 +27,22 @@ public class FavoriteBooks {
 	@ManyToOne
 	@JoinColumn(name = "book_id") 
     private Book book;
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+	
+	
 }

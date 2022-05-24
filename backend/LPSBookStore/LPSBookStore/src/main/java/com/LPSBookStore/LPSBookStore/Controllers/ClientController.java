@@ -20,7 +20,7 @@ public class ClientController {
 	@Autowired
 	private ClientRepository clientRepository; 
 	
-	@GetMapping(value="/Login")
+	@PostMapping(value="/Login")
 	public Client login(@RequestBody Map<String, String> login) throws Exception {
 		Client client = clientRepository.findClientByLogin(login.get("email"), login.get("password"));			
 		return client;		

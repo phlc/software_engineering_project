@@ -27,6 +27,7 @@ export type AuthenticatedUser = {
     cpf: string;
     password: string;
     cart: UserCart | undefined;
+    favoriteBooks: Book[] | undefined;
 }
 
 export type UserCart = {
