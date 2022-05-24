@@ -1,5 +1,5 @@
-import { Container, FormContainer } from "./styles"
-import {MenuBookTwoTone} from '@material-ui/icons';
+import { CloseContainer, CloseButton, Container, FormContainer } from "./styles"
+import {MenuBookTwoTone, CloseOutlined} from '@material-ui/icons';
 import { SignIn } from "./SignIn";
 import { SignUp } from "./SignUp";
 import { useGlobal } from "../../Contexts/Global/Global";
@@ -19,6 +19,9 @@ export const SignModal = ({showBody}: SignModalProps) => {
     return (
         <div onClick={() => setShowSignModal(2)}>
             <Container onClick={e => e.stopPropagation()}>
+                <CloseContainer>
+                    <CloseButton onClick={() => setShowSignModal(2)}><CloseOutlined fontSize="small"/></CloseButton>
+                </CloseContainer>
                 <div> <MenuBookTwoTone fontSize="large"/> </div>
             <FormContainer>
                     {

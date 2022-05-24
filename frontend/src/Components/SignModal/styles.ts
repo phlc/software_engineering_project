@@ -78,6 +78,20 @@ export const LoginButton = styled.button<{isDisabled: boolean}>`
         background: ${(props) => props.isDisabled ? '' : '#2c3b3b' };
     }
 `
+export const RegisterButton = styled.button<{isDisabled: boolean}>`
+    background: #3c3b3b; 
+    color: #ffffff;
+    padding: 1rem;
+    margin-top: 2rem;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    opacity: ${(props) => props.isDisabled ? '50%' : '100%' };
+    &:hover {
+        cursor: ${(props) => props.isDisabled ? '' : 'pointer' };
+        background: ${(props) => props.isDisabled ? '' : '#2c3b3b' };
+    }
+`
 
 export const SignUpLinkArea = styled.div`
     display: flex;
@@ -95,4 +109,18 @@ export const SignUpLink = styled.div`
         cursor: pointer;
         color: #2c3b3b;
     }
+`
+
+export const CloseContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+`
+
+export const CloseButton = styled.div`
+    &:hover {
+    cursor: pointer;
+        color: #2c3b3b;
+    }
+    
 `

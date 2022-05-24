@@ -1,8 +1,11 @@
 import { InputContainer, FormError, LoginButton, SignUpLinkArea, SignUpLink } from "../styles"
 import * as yup from "yup"
 import { useFormik } from "formik"
+import { login } from "../../../Api/ClientApi";
+import { useGlobal } from "../../../Contexts/Global/Global";
 
 export const SignIn = () => {
+    const { setAuthenticatedUser, setShowSignModal } = useGlobal()
     const formikSignForm = useFormik({
         initialValues: {
           email: "",
@@ -18,8 +21,15 @@ export const SignIn = () => {
             .required("O campo é obrigatório.")
             .max(10)
         }),
-        onSubmit: (values) => {
-          console.log(values.email, values.password)
+        onSubmit: async (values) => {
+          try {
+              const response = await login(values.email, values.password)
+              if(response) {
+                setAuthenticatedUser(response)
+              }
+          } catch (e) {
+            alert(e)
+          }
         },
       });
     return (
@@ -50,7 +60,7 @@ export const SignIn = () => {
                 <LoginButton isDisabled={!!(formikSignForm.errors.email || formikSignForm.errors.password)}>Entrar</LoginButton>
             </form>
             <SignUpLinkArea>
-                <SignUpLink>
+                <SignUpLink onClick={() => setShowSignModal(1)}>
                     Criar Conta
                 </SignUpLink>
             </SignUpLinkArea>
