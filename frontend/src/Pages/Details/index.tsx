@@ -9,16 +9,18 @@ import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutline
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { AddToCartButton, AuthorText, Background, BlackText, BookTitle, ButtonsView, CoverImage, DetailsContainer, FavoriteButton, LinkStyle, MainContainer, Row, SectionTitle, SinopseContainer, SubText, WhiteText } from "./styles";
 import { useState } from "react";
+import { useGlobal } from "../../Contexts/Global/Global";
 
 export default function BookDetails() {
-    //atualizar default depois de acordo com os favoritos do usuario logado
-    
+    const allBooks = useGlobal().books;
+    const setFavoriteBooks = useGlobal().setFavoriteBooks;
+    const favoriteBooks = useGlobal().favoriteBooks;
     let params = useParams();
-    //obter livro pelo id. por enquanto usando objeto mockado
-    const book = bookMock.filter((b: Book) => b.id.toString() === params.bookId)[0];
+
+    const book = allBooks.filter((b: Book) => b.id.toString() === params.bookId)[0];
     const [isFavorite, setIsFavorite] = useState(book.isFavorite);
-    //obter livros do autor pela nome do mesmo. por enquanto usando objeto mockado
-    const sameAuthorBooks = bookMock.filter((b: Book) => b.author === book.author);
+
+    const sameAuthorBooks = allBooks.filter((b: Book) => b.author === book.author);
 
     const handleAddCardButtonClick = (book: Book) => {
         
@@ -27,6 +29,14 @@ export default function BookDetails() {
     const handleFavoriteButtonClick = () => {
         book.isFavorite = !book.isFavorite;
         setIsFavorite(!isFavorite);
+        if(book.isFavorite) {
+            favoriteBooks.push(book);
+            setFavoriteBooks(favoriteBooks);
+        }
+        else {
+            const filteredFavoriteBooks = favoriteBooks.filter(favoriteBook => favoriteBook !== book);
+            setFavoriteBooks(filteredFavoriteBooks);
+        }
     };
 
     return(

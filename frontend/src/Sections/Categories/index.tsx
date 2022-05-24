@@ -22,7 +22,7 @@ export default function Categories () {
             <Row>
                 <CategoryCard name="Fantasia" urlImage={fantasia}/>
                 <CategoryCard name="Romance" urlImage={romance}/>
-                <CategoryCard name="Suspense" urlImage={suspense}/>
+                <CategoryCard name="Terror" urlImage={suspense}/>
                 <CategoryCard name="Poesia" urlImage={poesia}/>
             </Row>
         </Container>
