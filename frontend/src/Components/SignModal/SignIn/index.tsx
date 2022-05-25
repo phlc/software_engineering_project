@@ -23,7 +23,6 @@ export const SignIn = () => {
         }),
         onSubmit: async (values) => {
           try {
-            console.log(values)
               const response = await login(values.email, values.password)
               if(response) {
                 setAuthenticatedUser(response)
