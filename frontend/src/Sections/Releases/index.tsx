@@ -7,7 +7,6 @@ import { Button, Container, Row, SectionTitle } from "./styles";
 export default function Releases() {
     //chamar api para obter livros. por enquanto usando objeto mockado
     const allBooks = useGlobal().books;
-    console.log("RELEASES")
     const releaseBooks =  allBooks.filter((book: Book) => !book.isRelease); //bookMock.filter((book: Book) => book.isRelease);
     console.log(Object(releaseBooks));
     
