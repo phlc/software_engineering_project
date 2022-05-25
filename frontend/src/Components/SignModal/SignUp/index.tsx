@@ -45,6 +45,8 @@ export const SignUp = () => {
                 if(loginResponse) {
                   setAuthenticatedUser(loginResponse)
                 }
+            } else {
+                throw new Error("Não foi possível registrar o usuário")
             }
           } catch (e) {
             alert(e)
@@ -91,6 +93,7 @@ export const SignUp = () => {
                     <label>Senha:</label>
                     <input
                         name="password"
+                        type="password"
                         onChange={formikSignForm.handleChange}
                         value={formikSignForm.values.password}
                     />

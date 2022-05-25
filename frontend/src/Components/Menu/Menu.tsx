@@ -2,6 +2,7 @@ import {Tabs, Tab} from '@material-ui/core'
 import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp'
 import { useCallback, useState } from 'react'
 import { useGlobal } from '../../Contexts/Global/Global'
+import { AuthenticatedUser } from '../../types'
 import { SignModalEnum } from '../../utils/types'
 
 import './Menu.css'
@@ -14,7 +15,8 @@ export const Menu = ({
     style
 }: MenuProps) => {
     const [pageSelected, setTableSected] = useState(0)
-    const {setShowSignModal} = useGlobal()
+    const { authenticatedUser, setAuthenticatedUser, setShowSignModal } = useGlobal()
+
     const handleChange = useCallback((e: React.ChangeEvent<{}>, newValue: number) => {
         setTableSected(newValue)
     },[])
@@ -25,7 +27,18 @@ export const Menu = ({
                 <Tab label="Lançamentos"/>
                 <Tab label="Favoritos"/>
                 <Tab label="Carrinho"/>
-                <Tab label={<div className='login-tab' onClick={() => setShowSignModal(SignModalEnum.SIGN_IN)}><AccountCircleSharpIcon/><span >Entrar</span></div>} />
+                <Tab label={
+                    <div 
+                        className='login-tab' 
+                        onClick={() => authenticatedUser ? 
+                            setShowSignModal(SignModalEnum.SIGN_IN) : 
+                            setAuthenticatedUser({} as AuthenticatedUser)
+                        }
+                    >
+                        <AccountCircleSharpIcon/>
+                        <span >{authenticatedUser ? "Entrar" : "Sair"}</span>
+                    </div>
+                }/>
             </Tabs>
         </div>
     )
