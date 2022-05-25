@@ -39,9 +39,9 @@ export const SignUp = () => {
                 values.email, 
                 values.password
             )
-
-            if(signupResponse === "SUCCESS") {
+            if(signupResponse === 200) {
                 const loginResponse = await login(values.email, values.password)
+                
                 if(loginResponse) {
                   setAuthenticatedUser(loginResponse)
                 }

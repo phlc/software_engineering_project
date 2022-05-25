@@ -9,7 +9,7 @@ export type Book = {
     price: number;
     stock: number;
     category: string;
-    releaseDate: string;
+    releaseDate: Date;
     isRelease: boolean;
     isFavorite: boolean;
 };

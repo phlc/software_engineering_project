@@ -25,7 +25,7 @@ export const SignIn = () => {
           try {
               const response = await login(values.email, values.password)
               if(response) {
-                setAuthenticatedUser(response)
+                //setAuthenticatedUser(response)
               }
           } catch (e) {
             alert(e)
