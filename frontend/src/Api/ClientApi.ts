@@ -10,9 +10,13 @@ export const login = async (email: string, password: string) => {
     password: Buffer.from(password, "base64"),
   });
 
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+
   const response = await fetch("/login", {
     method: "POST",
     body: requestData,
+    headers,
   });
 
   const responseJson = await response.json();
@@ -31,10 +35,14 @@ export const signup = async (
     email,
     password: Buffer.from(password, "base64"),
   });
-  
+
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+
   const response = await fetch("/provide", {
     method: "POST",
     body: requestData,
+    headers
   });
 
   const responseJson = await response.json();
