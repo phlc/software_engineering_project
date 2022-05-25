@@ -10,7 +10,7 @@ export const bookMock: Book[] = [{
     price: 20.93,
     stock: 4,
     category: 'Autoajuda',
-    releaseDate: '20/01/1995',
+    releaseDate: new Date('20/01/1995'),
     isRelease: true,
     isFavorite: false,
     rateNumber: 3
@@ -24,7 +24,7 @@ export const bookMock: Book[] = [{
     price: 20.93,
     stock: 4,
     category: 'Autoajuda',
-    releaseDate: '20/01/1995',
+    releaseDate: new Date('20/01/1995'),
     isRelease: true,
     isFavorite: false,
     rateNumber: 3
@@ -38,7 +38,7 @@ export const bookMock: Book[] = [{
     price: 20.93,
     stock: 4,
     category: 'Autoajuda',
-    releaseDate: '20/01/1995',
+    releaseDate: new Date('20/01/1995'),
     isRelease: true,
     isFavorite: false,
     rateNumber: 3
@@ -52,7 +52,7 @@ export const bookMock: Book[] = [{
     price: 20.93,
     stock: 4,
     category: 'Autoajuda',
-    releaseDate: '20/01/1995',
+    releaseDate: new Date('20/01/1995'),
     isRelease: true,
     isFavorite: false,
     rateNumber: 3
@@ -66,7 +66,7 @@ export const bookMock: Book[] = [{
     price: 20.93,
     stock: 4,
     category: 'Auto Ajuda',
-    releaseDate: '20/01/1995',
+    releaseDate: new Date('20/01/1995'),
     isRelease: true,
     isFavorite: false,
     rateNumber: 3
@@ -80,7 +80,7 @@ export const bookMock: Book[] = [{
     price: 20.93,
     stock: 4,
     category: 'Auto Ajuda',
-    releaseDate: '20/01/1995',
+    releaseDate: new Date('20/01/1995'),
     isRelease: true,
     isFavorite: false,
     rateNumber: 3

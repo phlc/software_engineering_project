@@ -3,9 +3,12 @@ import * as yup from "yup"
 import { useFormik } from "formik"
 import { login } from "../../../Api/ClientApi";
 import { useGlobal } from "../../../Contexts/Global/Global";
+import { useToast } from "../../../Contexts/Toast/Toast";
 
 export const SignIn = () => {
     const { setAuthenticatedUser, setShowSignModal } = useGlobal()
+    const { addToast } = useToast()
+
     const formikSignForm = useFormik({
         initialValues: {
           email: "",
@@ -25,10 +28,19 @@ export const SignIn = () => {
           try {
               const response = await login(values.email, values.password)
               if(response) {
-                setAuthenticatedUser(response)
+                //setAuthenticatedUser(response)
+                addToast({
+                  type:"success",
+                  title: "Login realizado",
+                  description: "Você está logado."
+                })
               }
           } catch (e) {
-            alert(e)
+            addToast({
+              type: 'error',
+              title: 'Erro na autenticação',
+              description: 'Ocorreu um erro ao fazer login, cheque as credenciais.'
+            })
           }
         },
       });
