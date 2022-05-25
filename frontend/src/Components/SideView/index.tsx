@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { SideViewContainer } from "../../Pages/Category/styles";
 import { BoldText, ButtonText, SortButton, TitleInput } from "./styles";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
@@ -9,7 +9,6 @@ import { useLocal } from "../../Pages/Category/LocalContext";
 
 export default function SideView() {
     const {books, setBooks} = useLocal();
-    // const setBooks = useLocal().setBooks;
     const [colorPriceButton, setColorPriceButton] = useState('black');
     const [colorDateButton, setColorDateButton] = useState('black');
     const [titleQuery, setTitleQuery] = useState("");
@@ -27,8 +26,6 @@ export default function SideView() {
         console.log(orderedBooks)
         setBooks(orderedBooks);
     },[books, setBooks]);
-
-    //useEffect(() => handleSortByPrice(), [handleSortByPrice])
 
     const handleSortByDate = () => {
         setColorPriceButton('black');

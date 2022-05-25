@@ -75,3 +75,5 @@ export const SideViewContainer = styled.section`
     align-items: flex-start;
     justify-content: flex-start;
 `;
+
+
