@@ -4,11 +4,11 @@ import "./App.css";
 import AppRoutes from "./Components/routes";
 import { SignModal } from "./Components/SignModal";
 import { GlobalProvider } from "./Contexts/Global/Global";
+import { ToastProvider } from "./Contexts/Toast/Toast";
 import { AuthenticatedUser, Book } from "./types";
 import { SignModalEnum } from "./utils/types";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authenticatedUser, setAuthenticatedUser] = useState(
     {} as AuthenticatedUser
   );
@@ -40,18 +40,20 @@ function App() {
           setShowSignModal,
         }}
       >
-        <AppRoutes />
-        {
-          
-          showSignModal === SignModalEnum.SIGN_IN && (
-            <SignModal showBody={0} />
-          )
-        }
-        {  
-          showSignModal === SignModalEnum.SIGN_UP && (
-            <SignModal showBody={1} />
-          )
-        }
+        <ToastProvider>
+          <AppRoutes />
+          {
+            
+            showSignModal === SignModalEnum.SIGN_IN && (
+              <SignModal showBody={0} />
+            )
+          }
+          {  
+            showSignModal === SignModalEnum.SIGN_UP && (
+              <SignModal showBody={1} />
+            )
+          }
+        </ToastProvider>
       </GlobalProvider>
     </div>
   );
