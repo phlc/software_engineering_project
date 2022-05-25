@@ -16,14 +16,12 @@ export default function SideView() {
 
     const handleQuery = useCallback((query: string) => {
         setTitleQuery(query);
-        console.log(titleQuery);
     }, [titleQuery]);
     
     const handleSortByPrice = useCallback( () => {
         setColorPriceButton('#F05423');
         setColorDateButton('black');
         const orderedBooks = books.sort((a: Book, b: Book) => a.price - b.price);
-        console.log(orderedBooks)
         setBooks(orderedBooks);
     },[books, setBooks]);
 
@@ -35,7 +33,6 @@ export default function SideView() {
             return b.releaseDate.getTime() - a.releaseDate.getTime();
         });
         setBooks(orderedBooks);
-        console.log(orderedBooks);
     };
 
     return(

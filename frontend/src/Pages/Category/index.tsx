@@ -23,6 +23,7 @@ import DateRangeIcon from "@material-ui/icons/DateRange";
 
 export default function Category() {
   const allBooks = useGlobal().books;
+  const user = useGlobal().authenticatedUser;
   const windowHeight = window.outerHeight;
   const [books, setBooks] = useState([] as Book[]);
   const [colorPriceButton, setColorPriceButton] = useState('black');
@@ -53,14 +54,12 @@ export default function Category() {
     
   const handleQuery = useCallback((query: string) => {
       setTitleQuery(query);
-      console.log(titleQuery);
-  }, [titleQuery]);
+  }, []);
   
   const handleSortByPrice = useCallback( () => {
       setColorPriceButton('#F05423');
       setColorDateButton('black');
       const orderedBooks = books.sort((a: Book, b: Book) => a.price - b.price);
-      console.log(orderedBooks)
       setBooks(orderedBooks);
   },[books, setBooks]);
 
@@ -72,7 +71,6 @@ export default function Category() {
           return b.releaseDate.getTime() - a.releaseDate.getTime();
       });
       setBooks(orderedBooks);
-      console.log(orderedBooks);
   };
 
   return (
