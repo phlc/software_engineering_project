@@ -1,5 +1,3 @@
-import { Buffer } from 'buffer';
-
 export const getAllUsers = async () => {
   const response = await fetch("/Client/GetAll");
   const responseJson = await response.json();
@@ -20,9 +18,7 @@ export const login = async (email: string, password: string) => {
     body: requestData,
     headers: headers,
   });
-  
   const responseJson = await response.json();
-
   return responseJson;
 };
 
