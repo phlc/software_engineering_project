@@ -1,5 +1,7 @@
 package com.LPSBookStore.LPSBookStore.Entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +25,7 @@ public class Book {
     private Double price;
     private Integer stock;
     private String category;
-    private String releaseDate;
+    private Date releaseDate;
     private boolean isRelease;
     
     public Book() {
@@ -102,11 +104,11 @@ public class Book {
 		this.category = category;
 	}
 
-	public String getReleaseDate() {
+	public Date getReleaseDate() {
 		return releaseDate;
 	}
 
-	public void setReleaseDate(String releaseDate) {
+	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 
