@@ -3,10 +3,12 @@ import { login, signup } from "../../../Api/ClientApi";
 import { useGlobal } from "../../../Contexts/Global/Global";
 import { FormError, InputContainer, RegisterButton } from "../styles"
 import * as yup from "yup"
+import { useToast } from "../../../Contexts/Toast/Toast";
 
 
 export const SignUp = () => {
     const { setAuthenticatedUser, setShowSignModal } = useGlobal()
+    const { addToast } = useToast();
     const formikSignForm = useFormik({
         initialValues: {
           name: "",
@@ -43,7 +45,13 @@ export const SignUp = () => {
                 const loginResponse = await login(values.email, values.password)
                 
                 if(loginResponse) {
-                  setAuthenticatedUser(loginResponse)
+                  setAuthenticatedUser(loginResponse);
+                  addToast({
+                    type:"success",
+                    title: "Cadastro e login realizados",
+                    description: "Você está logado."
+                  })
+                  setShowSignModal(2);
                 }
             } else {
                 throw new Error("Não foi possível registrar o usuário")

@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { Menu } from "../../Components/Menu/Menu";
 import {
   Background,
