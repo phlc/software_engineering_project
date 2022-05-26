@@ -7,10 +7,12 @@ import {
   ButtonText,
   Container,
   Divider,
+  InvisibleButton,
   Row,
   SectionTitle,
   SideViewContainer,
   SortButton,
+  styles,
   TitleInput,
 } from "./styles";
 import BookCard from "../../Components/BookCard";
@@ -20,6 +22,7 @@ import { Book } from "../../types";
 import { LocalProvider } from "./LocalContext";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import DateRangeIcon from "@material-ui/icons/DateRange";
+import SearchIcon from "@material-ui/icons/Search";
 
 export default function Category() {
   const allBooks = useGlobal().books;
@@ -31,16 +34,11 @@ export default function Category() {
   const [titleQuery, setTitleQuery] = useState("");
 
   let params = useParams();
-  //filtrar livros da categoria. por enquanto usando objeto mockado
+
   useEffect(() => {
-    const filteredBooks = allBooks//allBooks.filter((book) => book.category === params.name);
+    const filteredBooks = allBooks;
     setBooks(filteredBooks);
   }, [params.name, allBooks])
-
-  // books.forEach(book => books.push(book))
-  // books.forEach(book => books.push(book))
-  // books.forEach(book => books.push(book))
-  // books.forEach(book => books.push(book))
   
   const booksView = useCallback(() => (
       books.map((book) => {
@@ -51,10 +49,6 @@ export default function Category() {
         );
     })
     ), [books])
-    
-  const handleQuery = useCallback((query: string) => {
-      setTitleQuery(query);
-  }, []);
   
   const handleSortByPrice = useCallback( () => {
       setColorPriceButton('#F05423');
@@ -63,27 +57,44 @@ export default function Category() {
       setBooks(orderedBooks);
   },[books, setBooks]);
 
-  const handleSortByDate = () => {
+  const handleSortByDate = useCallback(() => {
       setColorPriceButton('black');
       setColorDateButton('#F05423');
-      
+
       const orderedBooks = books.sort((a: Book, b: Book) => {
-          return b.releaseDate.getTime() - a.releaseDate.getTime();
+          return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
       });
       setBooks(orderedBooks);
-  };
+  }, [books, setBooks]);
+
+  const handleSearch = useCallback(() => {
+    setColorPriceButton('black');
+    setColorDateButton('#F05423');
+
+    let filteredBooks = books.filter(book => book.title.toLocaleLowerCase() === titleQuery.toLocaleLowerCase())
+    if(!filteredBooks.length){
+      filteredBooks = allBooks;
+    }
+
+    setBooks(filteredBooks);
+  }, [allBooks, books, titleQuery]);
 
   return (
     <LocalProvider value={{ books, setBooks }}>
       <Menu />
       <Container>
       <SideViewContainer style={{ height: windowHeight }}>
+        <Row>
           <TitleInput
             type="text"
             value={titleQuery}
             placeholder={"Digite o nome de um livro"}
-            onChange={(query) => handleQuery(query.target.value)}
+            onChange={(query) => setTitleQuery(query.target.value)}
           />
+          <InvisibleButton onClick={() => handleSearch()}>
+            <SearchIcon style={styles.searchStyle}/>
+          </InvisibleButton>
+        </Row>
           <BoldText>Ordenar por:</BoldText>
           <SortButton onClick={() => handleSortByPrice()}>
             <AttachMoneyIcon

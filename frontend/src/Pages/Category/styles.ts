@@ -1,3 +1,4 @@
+import { isAbsolute } from "path";
 import styled from "styled-components";
 import '../../assets/fonts/Fonts.css';
 
@@ -44,6 +45,7 @@ export const TitleInput = styled.input`
     border-radius: 5px;
     margin-top: 30px;
     margin-bottom: 20px;
+    width: 200px;
 `;
 
 export const SortButton = styled.button`
@@ -76,4 +78,19 @@ export const SideViewContainer = styled.section`
     justify-content: flex-start;
 `;
 
+export const InvisibleButton = styled.button`
+    background-color: transparent;
+    border: none;
+`;
 
+interface StyleSheet {
+    [key: string]: React.CSSProperties;
+}
+
+export const styles: StyleSheet = {
+    searchStyle: {
+        position: 'absolute',
+        left: 200,
+        top: 120,
+    }
+} 
