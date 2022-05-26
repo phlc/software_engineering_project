@@ -19,13 +19,20 @@ export default function BookCard ({
         book.isFavorite = !book.isFavorite;
         setIsFavorite(!isFavorite);
     };
+
+    const formatTitle = () => {
+        if(book.title.length > 30){
+            return book.title.substring(0, 30) + ('...');
+        }
+        return book.title;
+    };
     
     return(
         <Container>
             <CoverImage src={book.coverURL} />
             <DetailsView>
                 <Link to={`/details/${book.id}`} style={{ textDecoration: 'none'}}>
-                <TitleText>{book.title}</TitleText>
+                <TitleText>{formatTitle()}</TitleText>
             </Link>
                 <Row>
                     <BoldText>{'R$ ' + book.price.toString()}</BoldText>

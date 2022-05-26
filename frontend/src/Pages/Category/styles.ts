@@ -16,8 +16,10 @@ export const SideView = styled.section`
     display: flex;
     flex-direction: column;
     background-color: #F1EEEE;
-    padding: 30px 70px;
-    width: 10%;
+    padding: 30px 20px;
+    width: 300px;
+    align-items: flex-start;
+    justify-content: flex-start;
 `;
 
 export const SectionTitle = styled.text`
@@ -41,4 +43,37 @@ export const TitleInput = styled.input`
     border: none;
     border-radius: 5px;
     margin-top: 30px;
+    margin-bottom: 20px;
 `;
+
+export const SortButton = styled.button`
+    background-color: transparent;
+    flex-direction: row;
+    border: none;
+    margin-top: 10px;
+`;
+
+export const ButtonText = styled.text`
+    color: black;
+    font-family: 'Montserrat-regular';
+    font-size: 14px;
+    vertical-align: bottom;
+`;
+
+export const BoldText = styled.text`
+    color: black;
+    font-family: 'Montserrat-bold';
+    font-size: 14px;
+`;
+
+export const SideViewContainer = styled.section`
+    display: flex;
+    flex-direction: column;
+    background-color: #F1EEEE;
+    padding: 30px 20px;
+    width: 300px;
+    align-items: flex-start;
+    justify-content: flex-start;
+`;
+
+

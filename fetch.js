@@ -5,8 +5,6 @@ const query = async function (queryString) {
     `http://openlibrary.org/search.json?q=${queryString}`
   ).then((response) => response.json());
 
-  console.log(jsonData);
-
   const books = jsonData["docs"].map(function (elem) {
     const book = {
       titulo: elem["title"],
