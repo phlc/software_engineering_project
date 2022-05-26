@@ -1,9 +1,7 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import BookCard from "../../Components/BookCard";
 import { Menu } from "../../Components/Menu/Menu";
 import { Book } from "../../types";
-import { bookMock } from "../../__mock__/mock";
-import ArrowForward from '@material-ui/icons/ArrowForward';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -50,7 +48,6 @@ export default function BookDetails() {
                         <BookTitle>{book.title}</BookTitle>
                         <AuthorText>{book.author}</AuthorText>
                         <SubText>{book.description}</SubText>
-                        {/* <Link to="/sinopse" style={LinkStyle}>Ver a sinopse completa  <ArrowForward fontSize="small"style={{ marginBottom: -5}}/></Link> */}
                     </DetailsContainer>
                     <ButtonsView>
                         <FavoriteButton onClick={() => handleFavoriteButtonClick()}>
