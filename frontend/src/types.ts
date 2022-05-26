@@ -34,3 +34,8 @@ export type UserCart = {
     items: Book[];
     total: number;
 }
+
+export type FavoriteBook = {
+    client: AuthenticatedUser;
+    book: Book;
+}
