@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import { useGlobal } from '../../Contexts/Global/Global';
+import { setUserFavoriteBooks } from '../../Api/FavoriteBooksApi';
 
 type BookCardProps = {
     book: Book;
@@ -13,29 +15,41 @@ type BookCardProps = {
 export default function BookCard ({
     book,
 }: BookCardProps) {
-    const [isFavorite, setIsFavorite] = useState(book.isFavorite);
+    const [isFavorite, setIsFavorite] = useState(book?.isFavorite);
+    const setFavoriteBooks = useGlobal().setFavoriteBooks;
+    const favoriteBooks = useGlobal().favoriteBooks;
+    const user = useGlobal().authenticatedUser;
 
-    const handleFavoriteButtonClick = () => {
+    const handleFavoriteButtonClick = async () => {
         book.isFavorite = !book.isFavorite;
         setIsFavorite(!isFavorite);
+
+        if(favoriteBooks.indexOf(book) === -1) {
+            favoriteBooks.push(book);
+            setFavoriteBooks(favoriteBooks);
+        } else {
+            setFavoriteBooks(favoriteBooks.filter(b => b !== book))
+        }
+        
+        await setUserFavoriteBooks(user.id, book.id)
     };
 
     const formatTitle = () => {
-        if(book.title.length > 30){
+        if(book?.title?.length > 30){
             return book.title.substring(0, 30) + ('...');
         }
-        return book.title;
+        return book?.title;
     };
     
     return(
         <Container>
-            <CoverImage src={book.coverURL} />
+            <CoverImage src={book?.coverURL} />
             <DetailsView>
-                <Link to={`/details/${book.id}`} style={{ textDecoration: 'none'}}>
+                <Link to={`/details/${book?.id}`} style={{ textDecoration: 'none'}}>
                 <TitleText>{formatTitle()}</TitleText>
             </Link>
                 <Row>
-                    <BoldText>{'R$ ' + book.price.toString()}</BoldText>
+                    <BoldText>{'R$ ' + book?.price?.toString()}</BoldText>
                     {
                         <OcultButton onClick={() => handleFavoriteButtonClick()}>
                             {   

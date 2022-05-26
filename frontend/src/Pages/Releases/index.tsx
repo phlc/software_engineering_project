@@ -1,12 +1,11 @@
 import BookCard from "../../Components/BookCard";
+import { useGlobal } from "../../Contexts/Global/Global";
 import { Book } from "../../types";
-import { bookMock } from "../../__mock__/mock";
 import { Button, Container, Row, SectionTitle } from "./styles";
 
 export default function Releases() {
-    //chamar api para obter livros. por enquanto usando objeto mockado
-
-    const releaseBooks = bookMock.filter((book: Book) => book.isRelease);
+    const allBooks = useGlobal().books;
+    const releaseBooks =  allBooks.filter((book: Book) => !book.isRelease);
 
     return(
         <Container>

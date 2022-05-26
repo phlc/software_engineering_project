@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { Menu } from "../../Components/Menu/Menu";
 import {
   Background,
@@ -18,28 +17,38 @@ import {
 import BookCard from "../../Components/BookCard";
 import { useGlobal } from "../../Contexts/Global/Global";
 
-import { Book } from "../../types";
+import { Book, FavoriteBook } from "../../types";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import SearchIcon from "@material-ui/icons/Search";
+import { getUserFavoriteBooks } from "../../Api/FavoriteBooksApi";
 
-export default function Category() {
-  const allBooks = useGlobal().books;
+export default function Favorites() {
+  const user = useGlobal().authenticatedUser;
   const windowHeight = window.outerHeight;
   const [books, setBooks] = useState([] as Book[]);
   const [colorPriceButton, setColorPriceButton] = useState('black');
   const [colorDateButton, setColorDateButton] = useState('black');
   const [titleQuery, setTitleQuery] = useState("");
 
-  let params = useParams();
-
+  const getFavoriteBooks = async () => {
+      try {
+          const response = await getUserFavoriteBooks(user.id);
+          let favBooks = [] as Book[];
+          response.forEach((favBook: FavoriteBook) =>  favBooks.push(favBook.book));
+          setBooks(favBooks as Book[]); 
+      } catch(error){
+          console.log(error);
+          setBooks([])
+      }
+  };
+  
   useEffect(() => {
-    const filteredBooks = allBooks;
-    setBooks(filteredBooks);
-  }, [params.name, allBooks])
+    getFavoriteBooks()
+  }, []);
   
   const booksView = useCallback(() => (
-      books.map((book) => {
+      books?.length && books?.map((book) => {
           return (
             <Divider>
                 <BookCard book={book} />
@@ -69,13 +78,13 @@ export default function Category() {
     setColorPriceButton('black');
     setColorDateButton('#F05423');
 
-    let filteredBooks = books.filter(book => book.title.toLocaleLowerCase() === titleQuery.toLocaleLowerCase())
-    if(!filteredBooks.length){
-      filteredBooks = allBooks;
+    let filteredBooks = books?.filter(book => book.title.toLocaleLowerCase() === titleQuery.toLocaleLowerCase())
+    if(!filteredBooks?.length){
+      filteredBooks = books;
     }
 
     setBooks(filteredBooks);
-  }, [allBooks, books, titleQuery]);
+  }, [books, titleQuery]);
 
   return (
     <>
@@ -108,7 +117,7 @@ export default function Category() {
           </SortButton>
         </SideViewContainer>
         <Background style={{ height: windowHeight }}>
-          <SectionTitle>Livros de {params.name}</SectionTitle>
+          <SectionTitle>{user.name}, estes são os seus favoritos! ❤</SectionTitle>
           {
             <Row>
                 {booksView()}
