@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import Releases from "../Sections/Releases";
 import Category from "../Pages/Category";
 import Categories from "../Sections/Categories";
+import { ShoppingCart } from "../Pages/ShoppingKart";
 
 export default function AppRoutes() {
     return(
@@ -15,6 +16,7 @@ export default function AppRoutes() {
                 </Route>
                 <Route path="/details/:bookId" element={<BookDetails />} />
                 <Route path="/category/:name" element={<Category />} />
+                <Route path="/shopping-cart" element={<ShoppingCart />} />
             </Routes>
         </BrowserRouter>
     )

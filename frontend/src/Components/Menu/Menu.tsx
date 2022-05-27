@@ -3,7 +3,7 @@ import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp'
 import { useCallback, useState } from 'react'
 import { useGlobal } from '../../Contexts/Global/Global'
 import { AuthenticatedUser } from '../../types'
-import { SignModalEnum } from '../../utils/types'
+import { SignModalEnum } from '../../types'
 
 import './Menu.css'
 
