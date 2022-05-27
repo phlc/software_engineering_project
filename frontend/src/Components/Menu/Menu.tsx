@@ -55,19 +55,19 @@ export const Menu = ({
     return(
         <div className="menu-container" style={style}>
             <Tabs value={pageSelected} onChange={handleChange}>
-                <Tab label="Lançamentos" onClick={() => navigate('/releases')}/>
+                <Tab label="Lançamentos" onClick={() => navigate('/')}/>
                 <Tab label="Favoritos" onClick={handleFavoritesNavigation}/>
                 <Tab label="Carrinho" onClick={handleCartNavigation}/>
                 <Tab label={
                     <div 
                         className='login-tab' 
-                        onClick={() => authenticatedUser ? 
-                            setShowSignModal(SignModalEnum.SIGN_IN) : 
-                            setAuthenticatedUser({} as AuthenticatedUser)
+                        onClick={() => authenticatedUser?.cpf ? 
+                            setAuthenticatedUser({} as AuthenticatedUser) :
+                            setShowSignModal(SignModalEnum.SIGN_IN) 
                         }
                     >
                         <AccountCircleSharpIcon/>
-                        <span >{authenticatedUser ? "Entrar" : "Sair"}</span>
+                        <span >{authenticatedUser?.cpf ? "Sair" : "Entrar"}</span>
                     </div>
                 }/>
             </Tabs>

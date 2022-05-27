@@ -22,6 +22,7 @@ import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import SearchIcon from "@material-ui/icons/Search";
 import { getUserFavoriteBooks } from "../../Api/FavoriteBooksApi";
+import { EmptyFavorites } from "./Empty";
 
 export default function Favorites() {
   const user = useGlobal().authenticatedUser;
@@ -30,6 +31,7 @@ export default function Favorites() {
   const [colorPriceButton, setColorPriceButton] = useState('black');
   const [colorDateButton, setColorDateButton] = useState('black');
   const [titleQuery, setTitleQuery] = useState("");
+  const [allBooks, setAllBooks] = useState([] as Book[]);
 
   const getFavoriteBooks = async () => {
       try {
@@ -38,8 +40,10 @@ export default function Favorites() {
           response.forEach((favBook: FavoriteBook) =>  {
             favBook.book.isFavorite = true;
             favBooks.push(favBook.book)
-      });
+          });
+
           setBooks(favBooks as Book[]); 
+          setAllBooks(favBooks)
       } catch(error){
           console.log(error);
           setBooks([])
@@ -50,15 +54,19 @@ export default function Favorites() {
     getFavoriteBooks()
   }, []);
   
-  const booksView = useCallback(() => (
-      books?.length && books?.map((book) => {
-          return (
-            <Divider>
-                <BookCard book={book} />
-            </Divider>
+  const booksView = useCallback(() => {
+    return (books.length > 0 ? (
+      books.map((book) => {
+        return (
+          <Divider>
+            <BookCard book={book} />
+          </Divider>
         );
-    })
-    ), [books])
+      })
+    ) : (
+      <EmptyFavorites />
+    ))
+  }, [books]);
   
   const handleSortByPrice = useCallback( () => {
       setColorPriceButton('#F05423');
@@ -83,11 +91,11 @@ export default function Favorites() {
 
     let filteredBooks = books?.filter(book => book.title.toLocaleLowerCase() === titleQuery.toLocaleLowerCase())
     if(!filteredBooks?.length){
-      filteredBooks = books;
+      filteredBooks = allBooks;
     }
 
     setBooks(filteredBooks);
-  }, [books, titleQuery]);
+  }, [allBooks, books, titleQuery]);
 
   return (
     <>

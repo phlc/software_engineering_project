@@ -18,13 +18,16 @@ import {
 import BookCard from "../../Components/BookCard";
 import { useGlobal } from "../../Contexts/Global/Global";
 
-import { Book } from "../../types";
+import { Book, FavoriteBook } from "../../types";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import SearchIcon from "@material-ui/icons/Search";
+import { getUserFavoriteBooks } from "../../Api/FavoriteBooksApi";
+import { EmptyCategory } from "./Empty";
 
 export default function Category() {
   const allBooks = useGlobal().books;
+  const user = useGlobal().authenticatedUser;
   const windowHeight = window.outerHeight;
   const [books, setBooks] = useState([] as Book[]);
   const [colorPriceButton, setColorPriceButton] = useState("black");
@@ -33,22 +36,47 @@ export default function Category() {
 
   let params = useParams();
 
+  const setFilteredBooks = async () => {
+    if (user.cpf) {
+      let userFavorites = [] as Book[];
+      const response = await getUserFavoriteBooks(user.id);
+      response.forEach((favBook: FavoriteBook) =>
+        userFavorites.push(favBook.book)
+      );
+      const booksWithFavorites = allBooks.map((book: Book) => {
+        const index = userFavorites.indexOf(book);
+        if (index > -1) {
+          book.isFavorite = true;
+        }
+        return book;
+      });
+      setBooks(
+        booksWithFavorites.filter((book) => book.category === params.name)
+      );
+    } else {
+      const filteredBooks = allBooks.filter(
+        (book) => book.category === params.name
+      );
+      setBooks(filteredBooks);
+    }
+  };
   useEffect(() => {
-    const filteredBooks = allBooks.filter(book => book.category === params.name);
-    setBooks(filteredBooks);
+    setFilteredBooks();
   }, [params.name, allBooks]);
 
-  const booksView = useCallback(
-    () =>
+  const booksView = useCallback(() => {
+    return (books.length > 0 ? (
       books.map((book) => {
         return (
           <Divider>
             <BookCard book={book} />
           </Divider>
         );
-      }),
-    [books]
-  );
+      })
+    ) : (
+      <EmptyCategory />
+    ))
+  }, [books]);
 
   const handleSortByPrice = useCallback(() => {
     setColorPriceButton("#F05423");
@@ -66,7 +94,7 @@ export default function Category() {
         new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
       );
     });
-    
+
     setBooks(orderedBooks);
   }, [books, setBooks]);
 

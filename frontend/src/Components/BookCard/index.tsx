@@ -19,6 +19,7 @@ export default function BookCard ({
     const setFavoriteBooks = useGlobal().setFavoriteBooks;
     const favoriteBooks = useGlobal().favoriteBooks;
     const user = useGlobal().authenticatedUser;
+    const addBookToShoppingCart = useGlobal().addBookToShoppingCart;
 
     const handleFavoriteButtonClick = async () => {
         book.isFavorite = !book.isFavorite;
@@ -40,6 +41,10 @@ export default function BookCard ({
         }
         return book?.title;
     };
+
+    const formatPrice = (price: number) => {
+        return ('R$ ' + price.toFixed(2).toString().replace('.', ','));
+    };
     
     return(
         <Container>
@@ -49,7 +54,7 @@ export default function BookCard ({
                 <TitleText>{formatTitle()}</TitleText>
             </Link>
                 <Row>
-                    <BoldText>{'R$ ' + book?.price?.toString()}</BoldText>
+                    <BoldText>{formatPrice(book?.price)}</BoldText>
                     {
                         <OcultButton onClick={() => handleFavoriteButtonClick()}>
                             {   
@@ -59,7 +64,10 @@ export default function BookCard ({
                             }
                         </OcultButton>
                     }
-                    <AddShoppingCartIcon style={{ fontSize: 20}} />
+                    <AddShoppingCartIcon 
+                        onClick={() => {addBookToShoppingCart(book)}} 
+                        style={{ fontSize: 20}} 
+                    />
                 </Row>
             </DetailsView>
         </Container>

@@ -5,7 +5,7 @@ import "./App.css";
 import AppRoutes from "./Components/routes";
 import { SignModal } from "./Components/SignModal";
 import { GlobalProvider } from "./Contexts/Global/Global";
-import { ToastProvider } from "./Contexts/Toast/Toast";
+import { ToastProvider, useToast } from "./Contexts/Toast/Toast";
 import { AuthenticatedUser, Book, ShoppingCartItemType } from "./types";
 import { SignModalEnum } from "./types";
 
@@ -17,14 +17,13 @@ function App() {
   const [favoriteBooks, setFavoriteBooks] = useState([] as Book[]);
   const [showSignModal, setShowSignModal] = useState(SignModalEnum.UNDEFINED)
   const [shoppingCart, setShoppingCart] = useState([] as ShoppingCartItemType[])
-
+  const { addToast } = useToast()
   const getBooks = async () => {
     const response = await getAllBooks();
     setBooks(response);
   };
 
   const addBookToShoppingCart = useCallback((newBook: Book) => {
-    console.log(newBook.id)
     const hasThisBookInTheList = shoppingCart.find((item) => item.book.id == newBook.id)
     if (!!hasThisBookInTheList) {
       const aux = shoppingCart.map((item) => ({ 
@@ -43,6 +42,12 @@ function App() {
           days: 20 + (Math.floor(Math.random() * 10))
         }])
     }
+
+    addToast({
+      type:"success",
+      title: "Livro adicionado",
+      description: "Seu carrinho foi atualizado."
+    })
   }, [shoppingCart])
 
   const removeBookToShoppingCart = useCallback((bookId: number) => {

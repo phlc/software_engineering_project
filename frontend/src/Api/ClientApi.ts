@@ -1,3 +1,5 @@
+import { AuthenticatedUser } from "../types";
+
 export const getAllUsers = async () => {
   const response = await fetch("/Client/GetAll");
   const responseJson = await response.json();
@@ -5,28 +7,22 @@ export const getAllUsers = async () => {
 };
 
 export const login = async (email: string, password: string) => {
-  const requestData = JSON.stringify({
+  const requestData = {
     email: email,
-    password: btoa(password).toString(),
-  });
+    password: btoa(password)
+  };
 
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
 
   const response = await fetch("/Client/Login", {
     method: "POST",
-    body: requestData,
-    headers: headers,
+    body: JSON.stringify(requestData),
+    headers: headers
   });
-  console.log(response)
-  try {
-    const responseJson = await response.json();
-    console.log(responseJson)
-    return responseJson;
-  }
-  catch(error){
-    console.log(error);
-  }
+
+  const responseJson: AuthenticatedUser = await response.json();
+  return responseJson;
 };
 
 export const signup = async (
