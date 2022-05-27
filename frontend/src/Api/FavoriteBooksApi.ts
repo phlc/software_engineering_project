@@ -14,6 +14,7 @@ export const getUserFavoriteBooks = async (clientId: number) : Promise<FavoriteB
         body: requestData
     });
     const responseJson = await response.json();
+    
     return responseJson;
   };
 
@@ -28,11 +29,12 @@ export const getUserFavoriteBooks = async (clientId: number) : Promise<FavoriteB
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    const response = await fetch("/FavoriteBooks/Provide", {
+    const response = await fetch("/FavoriteBooks/CreateOrDelete", {
         method: "POST",
         headers: headers,
         body: requestData
     });
 
+    console.log(response);
     return response;
   };
