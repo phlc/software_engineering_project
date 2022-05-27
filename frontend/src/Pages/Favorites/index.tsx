@@ -35,7 +35,10 @@ export default function Favorites() {
       try {
           const response = await getUserFavoriteBooks(user.id);
           let favBooks = [] as Book[];
-          response.forEach((favBook: FavoriteBook) =>  favBooks.push(favBook.book));
+          response.forEach((favBook: FavoriteBook) =>  {
+            favBook.book.isFavorite = true;
+            favBooks.push(favBook.book)
+      });
           setBooks(favBooks as Book[]); 
       } catch(error){
           console.log(error);

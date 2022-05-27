@@ -27,6 +27,7 @@ export const SignIn = () => {
         onSubmit: async (values) => {
           try {
               const response = await login(values.email, values.password)
+
               if(response) {
                 setAuthenticatedUser(response)
                 addToast({
