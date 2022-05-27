@@ -22,6 +22,7 @@ import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import SearchIcon from "@material-ui/icons/Search";
 import { getUserFavoriteBooks } from "../../Api/FavoriteBooksApi";
+import { EmptyFavorites } from "./Empty";
 
 export default function Favorites() {
   const user = useGlobal().authenticatedUser;
@@ -38,7 +39,8 @@ export default function Favorites() {
           response.forEach((favBook: FavoriteBook) =>  {
             favBook.book.isFavorite = true;
             favBooks.push(favBook.book)
-      });
+          });
+
           setBooks(favBooks as Book[]); 
       } catch(error){
           console.log(error);
@@ -50,15 +52,19 @@ export default function Favorites() {
     getFavoriteBooks()
   }, []);
   
-  const booksView = useCallback(() => (
-      books?.length && books?.map((book) => {
-          return (
-            <Divider>
-                <BookCard book={book} />
-            </Divider>
+  const booksView = useCallback(() => {
+    return (books.length > 0 ? (
+      books.map((book) => {
+        return (
+          <Divider>
+            <BookCard book={book} />
+          </Divider>
         );
-    })
-    ), [books])
+      })
+    ) : (
+      <EmptyFavorites />
+    ))
+  }, [books]);
   
   const handleSortByPrice = useCallback( () => {
       setColorPriceButton('#F05423');
