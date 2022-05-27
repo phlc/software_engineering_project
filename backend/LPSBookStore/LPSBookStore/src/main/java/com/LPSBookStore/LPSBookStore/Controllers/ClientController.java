@@ -22,8 +22,7 @@ public class ClientController {
 	
 	@PostMapping(value="/Login")
 	public Client login(@RequestBody Map<String, String> login) throws Exception {
-		Client client = clientRepository.findClientByLogin(login.get("email"), login.get("password"));			
-		return client;		
+		return clientRepository.findClientByLogin(login.get("email"), login.get("password"));				
 	}
 	
 	// Update and Create

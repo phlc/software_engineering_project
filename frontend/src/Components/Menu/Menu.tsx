@@ -55,7 +55,7 @@ export const Menu = ({
     return(
         <div className="menu-container" style={style}>
             <Tabs value={pageSelected} onChange={handleChange}>
-                <Tab label="Lançamentos" onClick={() => navigate('/releases')}/>
+                <Tab label="Lançamentos" onClick={() => navigate('/')}/>
                 <Tab label="Favoritos" onClick={handleFavoritesNavigation}/>
                 <Tab label="Carrinho" onClick={handleCartNavigation}/>
                 <Tab label={
