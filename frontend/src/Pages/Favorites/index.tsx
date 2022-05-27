@@ -31,6 +31,7 @@ export default function Favorites() {
   const [colorPriceButton, setColorPriceButton] = useState('black');
   const [colorDateButton, setColorDateButton] = useState('black');
   const [titleQuery, setTitleQuery] = useState("");
+  const [allBooks, setAllBooks] = useState([] as Book[]);
 
   const getFavoriteBooks = async () => {
       try {
@@ -42,6 +43,7 @@ export default function Favorites() {
           });
 
           setBooks(favBooks as Book[]); 
+          setAllBooks(favBooks)
       } catch(error){
           console.log(error);
           setBooks([])
@@ -89,11 +91,11 @@ export default function Favorites() {
 
     let filteredBooks = books?.filter(book => book.title.toLocaleLowerCase() === titleQuery.toLocaleLowerCase())
     if(!filteredBooks?.length){
-      filteredBooks = books;
+      filteredBooks = allBooks;
     }
 
     setBooks(filteredBooks);
-  }, [books, titleQuery]);
+  }, [allBooks, books, titleQuery]);
 
   return (
     <>
