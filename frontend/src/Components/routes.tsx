@@ -4,7 +4,7 @@ import Home from "../Pages/Home";
 import Releases from "../Sections/Releases";
 import Category from "../Pages/Category";
 import Categories from "../Sections/Categories";
-import { ShoppingCart } from "../Pages/ShoppingKart";
+import { ShoppingCart } from "../Pages/ShoppingCart";
 import Favorites from "../Pages/Favorites";
 
 export default function AppRoutes() {
