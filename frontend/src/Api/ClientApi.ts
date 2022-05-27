@@ -18,8 +18,15 @@ export const login = async (email: string, password: string) => {
     body: requestData,
     headers: headers,
   });
-  const responseJson = await response.json();
-  return responseJson;
+  console.log(response)
+  try {
+    const responseJson = await response.json();
+    console.log(responseJson)
+    return responseJson;
+  }
+  catch(error){
+    console.log(error);
+  }
 };
 
 export const signup = async (

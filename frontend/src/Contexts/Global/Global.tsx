@@ -1,5 +1,5 @@
 import { createContext, FunctionComponent, ReactNode, useContext } from 'react';
-import { SignModalEnum } from '../../utils/types';
+import { ShoppingCartItemType, SignModalEnum } from '../../types';
 import { AuthenticatedUser, Book } from '../../types';
 
 interface GlobalProviderProps {
@@ -15,6 +15,10 @@ interface GlobalContextData {
     setAuthenticatedUser: React.Dispatch<React.SetStateAction<AuthenticatedUser>>;
     favoriteBooks: Book[];
     setFavoriteBooks: React.Dispatch<React.SetStateAction<Book[]>>;
+    shoppingCart: ShoppingCartItemType[];
+    setShoppingCart: React.Dispatch<React.SetStateAction<ShoppingCartItemType[]>>;
+    addBookToShoppingCart: (book: Book) => void
+    removeBookToShoppingCart: (bookId: number) => void
 }
 
 

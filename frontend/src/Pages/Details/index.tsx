@@ -13,16 +13,14 @@ export default function BookDetails() {
     const allBooks = useGlobal().books;
     const setFavoriteBooks = useGlobal().setFavoriteBooks;
     const favoriteBooks = useGlobal().favoriteBooks;
+    const addBookToShoppingCart = useGlobal().addBookToShoppingCart;
+
     let params = useParams();
 
     const book = allBooks.filter((b: Book) => b.id.toString() === params.bookId)[0];
     const [isFavorite, setIsFavorite] = useState(book.isFavorite);
 
     const sameAuthorBooks = allBooks.filter((b: Book) => b.author === book.author);
-
-    const handleAddCardButtonClick = (book: Book) => {
-        
-    };
 
     const handleFavoriteButtonClick = () => {
         book.isFavorite = !book.isFavorite;
@@ -58,7 +56,7 @@ export default function BookDetails() {
                             }
                             <BlackText>Favoritar</BlackText>
                         </FavoriteButton>
-                        <AddToCartButton onClick={() => handleAddCardButtonClick(book)}>
+                        <AddToCartButton onClick={() => addBookToShoppingCart(book)}>
                             <AddShoppingCartIcon style={{ color: 'white', marginRight: 5}}/>
                             <WhiteText>Adic. ao carrinho</WhiteText>
                         </AddToCartButton>

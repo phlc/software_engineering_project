@@ -1,3 +1,10 @@
+export enum SignModalEnum {
+    SIGN_IN,
+    SIGN_UP,
+    UNDEFINED
+}
+
+
 export type Book = {
     id: number;
     coverURL: string;
@@ -33,6 +40,14 @@ export type AuthenticatedUser = {
 export type UserCart = {
     items: Book[];
     total: number;
+}
+
+
+
+export type ShoppingCartItemType = {
+    book: Book
+    amount: number
+    days: number
 }
 
 export type FavoriteBook = {
