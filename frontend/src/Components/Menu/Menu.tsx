@@ -28,7 +28,7 @@ export const Menu = ({
             <Tabs value={pageSelected} onChange={handleChange}>
                 <Tab label="Lançamentos" onClick={() => navigate('/releases')}/>
                 <Tab label="Favoritos" onClick={() => navigate('/favorites')}/>
-                <Tab label="Carrinho"/>
+                <Tab label="Carrinho" onClick={() => navigate('/shopping-cart')}/>
                 <Tab label={
                     <div 
                         className='login-tab' 

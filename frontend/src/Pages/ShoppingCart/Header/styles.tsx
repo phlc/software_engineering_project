@@ -11,8 +11,5 @@ export const HeaderItem = styled.div`
     color: #515050;
     font-size: 18px;
     text-align: center;
-
-    &#produto {
-        text-align: left;
-    }
+    font-family: 'Montserrat-Medium';
 `

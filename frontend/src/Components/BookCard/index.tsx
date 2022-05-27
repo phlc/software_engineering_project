@@ -19,6 +19,7 @@ export default function BookCard ({
     const setFavoriteBooks = useGlobal().setFavoriteBooks;
     const favoriteBooks = useGlobal().favoriteBooks;
     const user = useGlobal().authenticatedUser;
+    const addBookToShoppingCart = useGlobal().addBookToShoppingCart;
 
     const handleFavoriteButtonClick = async () => {
         book.isFavorite = !book.isFavorite;
@@ -59,7 +60,10 @@ export default function BookCard ({
                             }
                         </OcultButton>
                     }
-                    <AddShoppingCartIcon style={{ fontSize: 20}} />
+                    <AddShoppingCartIcon 
+                        onClick={() => {addBookToShoppingCart(book)}} 
+                        style={{ fontSize: 20}} 
+                    />
                 </Row>
             </DetailsView>
         </Container>

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { purchase } from "../../Api/Purchase"
 import { Menu } from "../../Components/Menu/Menu"
@@ -7,15 +7,16 @@ import { useToast } from "../../Contexts/Toast/Toast"
 import { EmptyShoppingCart } from "./Empty"
 import { Header } from "./Header"
 import { ShoppingCartItem } from "./ShoppingCartItem"
-import { Body, Container, TitleDiv, Card } from "./styles"
+import { Body, Container, TitleDiv, Card, TotalValue, TotalDiv } from "./styles"
 import { SuccessRequest } from "./SuccessRequest"
 import { ButtonDiv } from "./SuccessRequest/styles"
 
 export const ShoppingCart = () => {
-    const { shoppingCart, authenticatedUser, addBookToShoppingCart } = useGlobal()
+    const { shoppingCart, authenticatedUser, addBookToShoppingCart,setShoppingCart } = useGlobal()
     const { addToast } = useToast()
     const navigate = useNavigate()
     const [showSuccessRequest, setShowSuccessRequest] = useState(false)
+    const [totalPrice, setTotalPrice] = useState(0.0)
 
     const sendRequest = useCallback(() => {
         try {
@@ -30,6 +31,9 @@ export const ShoppingCart = () => {
 
             booksId += "]"
             const response = purchase(booksId, `${authenticatedUser.id}`)
+
+            setShoppingCart([])
+            setShowSuccessRequest(true)
         } catch (error) {
             addToast({
                 type:"error",
@@ -43,6 +47,14 @@ export const ShoppingCart = () => {
         navigate('/')
         setShowSuccessRequest(false);
     }, [])
+
+    useEffect(() => {
+        let aux = 0.0; 
+        shoppingCart.forEach((item) => {aux += item.amount * item.book.price})
+
+        setTotalPrice(aux)
+
+    }, [shoppingCart])
     return (
         <>
             <Menu />
@@ -53,7 +65,7 @@ export const ShoppingCart = () => {
                 <Card>
                     <Body>
                         {
-                            shoppingCart.length > 0 &&
+                            (!showSuccessRequest && shoppingCart.length > 0) &&
                             (
                                 <>
                                     <Header/>
@@ -61,6 +73,14 @@ export const ShoppingCart = () => {
                                         shoppingCart.map((item) => (
                                             <ShoppingCartItem item={item} key={item.book.title}/>
                                         ))
+                                    }
+                                    {
+                                        <TotalDiv>
+                                            <div id="first-column"/>
+                                            <div id="second-column"/>
+                                            <div id="third-column"/>
+                                            <TotalValue>{`R$ ${totalPrice}`}</TotalValue>
+                                        </TotalDiv>
                                     }
                                     <ButtonDiv>
                                         <button 
@@ -75,7 +95,6 @@ export const ShoppingCart = () => {
                         {
                             showSuccessRequest && (
                                 <>
-                                
                                     <SuccessRequest />
                                     <ButtonDiv>
                                         <button 
@@ -89,7 +108,25 @@ export const ShoppingCart = () => {
                         }
                         {
                             (!showSuccessRequest && shoppingCart.length === 0)&& (
-                                <EmptyShoppingCart />
+                                <>
+                                    <EmptyShoppingCart />
+                                    <button onClick={() => addBookToShoppingCart({
+                                    id: 2,
+                                    coverURL: 'https://images-na.ssl-images-amazon.com/images/I/51z0s3GcvwL._SX346_BO1,204,203,200_.jpg',
+                                    rate: 33,
+                                    rateNumber: 33,
+                                    title: "string",
+                                    author: "string",
+                                    description: "string",
+                                    price: 20.68,
+                                    stock: 22.34,
+                                    category: "string",
+                                    releaseDate: new Date(),
+                                    isRelease: true,
+                                    isFavorite: true,
+                                })}>add</button>
+                                </>
+                                
                             ) 
                         }
                         
