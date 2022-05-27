@@ -1,7 +1,7 @@
 import { Container, MainText } from "./styles";
 import header from '../../assets/images/header.png';
 import { Menu } from "../../Components/Menu/Menu";
-import { url } from "inspector";
+
 export default function Header () {
     return (
         <Container style={{backgroundImage: `url(${header})`}}>

@@ -41,6 +41,10 @@ export default function BookCard ({
         }
         return book?.title;
     };
+
+    const formatPrice = (price: number) => {
+        return ('R$ ' + price.toFixed(2).toString().replace('.', ','));
+    };
     
     return(
         <Container>
@@ -50,7 +54,7 @@ export default function BookCard ({
                 <TitleText>{formatTitle()}</TitleText>
             </Link>
                 <Row>
-                    <BoldText>{'R$ ' + book?.price?.toString()}</BoldText>
+                    <BoldText>{formatPrice(book?.price)}</BoldText>
                     {
                         <OcultButton onClick={() => handleFavoriteButtonClick()}>
                             {   

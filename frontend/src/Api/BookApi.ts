@@ -11,6 +11,7 @@ export const getAllBooks = async () => {
         headers: headers,
         body: requestData
     });
+
     const responseJson = await response.json();
     return responseJson;
   };
@@ -30,6 +31,7 @@ export const getAllBooks = async () => {
         headers: headers,
         body: requestData
     });
+
     const responseJson = await response.json();
     return responseJson;
   };

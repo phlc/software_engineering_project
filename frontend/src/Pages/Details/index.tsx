@@ -58,7 +58,7 @@ export default function BookDetails() {
                         </FavoriteButton>
                         <AddToCartButton onClick={() => addBookToShoppingCart(book)}>
                             <AddShoppingCartIcon style={{ color: 'white', marginRight: 5}}/>
-                            <WhiteText>Adic. ao carrinho</WhiteText>
+                            <WhiteText>Comprar</WhiteText>
                         </AddToCartButton>
                     </ButtonsView>
                 </MainContainer>
