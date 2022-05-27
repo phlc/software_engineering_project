@@ -1,5 +1,6 @@
 package com.LPSBookStore.LPSBookStore.Controllers;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.LPSBookStore.LPSBookStore.Entities.Book;
 import com.LPSBookStore.LPSBookStore.Entities.FavoriteBooks;
 import com.LPSBookStore.LPSBookStore.Entities.Purchase;
 import com.LPSBookStore.LPSBookStore.Entities.PurchaseBook;
@@ -49,13 +51,27 @@ public class PurchaseController {
 			String idsString = request.get("books_id").replace("[", "");
 			idsString = idsString.replace("]", "");
 			String[] booksIds = idsString.split(", ");
-
+			
+			ArrayList<Book> books = new ArrayList<Book>();
+			
 			for(String id : booksIds) {
+				Book aux = bookRepository.getById(Integer.parseInt(id));
+				
+				if(aux.getStock() <= 0) {
+					return "BOOK_OUT_OF_STOCK: " + aux.getTitle();		
+				}
+				books.add(aux);
+			}
+
+			for(Book book : books) {
+				book.setStock(book.getStock() - 1);
+				bookRepository.save(book);
+				
 				PurchaseBook purchaseBook = new PurchaseBook();
 				purchaseBook.setPurchase(purchase);
-				purchaseBook.setBook(bookRepository.getById(Integer.parseInt(id)));
-				
+				purchaseBook.setBook(book);				
 				purchaseBookRepository.save(purchaseBook);
+				
 			}
 			
 		} catch(Exception e) {

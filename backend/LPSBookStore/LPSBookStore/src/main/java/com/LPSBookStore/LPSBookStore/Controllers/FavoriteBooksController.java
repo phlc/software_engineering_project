@@ -28,14 +28,22 @@ public class FavoriteBooksController {
 	private BookRepository bookRepository; 
 	
 	// Create
-	@PostMapping(value="/Provide") 
-	public String createFavorite(@RequestBody Map<String, String> request) throws Exception {
+	@PostMapping(value="/CreateOrDelete") 
+	public String createOrDeleteFavorite(@RequestBody Map<String, String> request) throws Exception {
 		try {
 			FavoriteBooks fbks = new FavoriteBooks();
-			fbks.setBook(bookRepository.getById(Integer.parseInt(request.get("book_id"))));
-			fbks.setClient(clientRepository.getById(Integer.parseInt(request.get("client_id"))));
+			int book_id = Integer.parseInt(request.get("book_id"));
+			int client_id = Integer.parseInt(request.get("client_id"));
+			List<FavoriteBooks> favBooks = favoriteBooksRepository.getFavoritesByUserAndBook(client_id, book_id);	
 			
-			favoriteBooksRepository.save(fbks);			
+			if(favBooks != null && favBooks.size() > 0) {
+				favoriteBooksRepository.deleteAll(favBooks);
+			}else {			
+				fbks.setBook(bookRepository.getById(book_id));
+				fbks.setClient(clientRepository.getById(client_id));
+				
+				favoriteBooksRepository.save(fbks);		
+			}
 		} catch(Exception e) {
 			return e.getMessage();
 		}
@@ -45,7 +53,6 @@ public class FavoriteBooksController {
 	// Retorna livros favoritos de um usuário
 	@PostMapping(value="/GetFavoritesByUser") 
 	public List<FavoriteBooks> getFavoritesByUser(@RequestBody Map<String, String> request) throws Exception {
-		System.out.println("ID " + Integer.parseInt(request.get("client_id")));
 		return favoriteBooksRepository.getFavoritesByUser(Integer.parseInt(request.get("client_id")));			
 	}
 		

@@ -49,3 +49,8 @@ export type ShoppingCartItemType = {
     amount: number
     days: number
 }
+
+export type FavoriteBook = {
+    client: AuthenticatedUser;
+    book: Book;
+}

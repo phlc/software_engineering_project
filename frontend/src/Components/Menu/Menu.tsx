@@ -1,6 +1,7 @@
 import {Tabs, Tab} from '@material-ui/core'
 import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp'
 import { useCallback, useState } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { useGlobal } from '../../Contexts/Global/Global'
 import { AuthenticatedUser } from '../../types'
 import { SignModalEnum } from '../../types'
@@ -16,6 +17,7 @@ export const Menu = ({
 }: MenuProps) => {
     const [pageSelected, setTableSected] = useState(0)
     const { authenticatedUser, setAuthenticatedUser, setShowSignModal } = useGlobal()
+    const navigate = useNavigate();
 
     const handleChange = useCallback((e: React.ChangeEvent<{}>, newValue: number) => {
         setTableSected(newValue)
@@ -24,8 +26,8 @@ export const Menu = ({
     return(
         <div className="menu-container" style={style}>
             <Tabs value={pageSelected} onChange={handleChange}>
-                <Tab label="Lançamentos"/>
-                <Tab label="Favoritos"/>
+                <Tab label="Lançamentos" onClick={() => navigate('/releases')}/>
+                <Tab label="Favoritos" onClick={() => navigate('/favorites')}/>
                 <Tab label="Carrinho"/>
                 <Tab label={
                     <div 

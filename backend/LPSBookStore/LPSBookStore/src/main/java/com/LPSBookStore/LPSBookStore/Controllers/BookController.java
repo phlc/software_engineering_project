@@ -1,7 +1,10 @@
 package com.LPSBookStore.LPSBookStore.Controllers;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,5 +41,14 @@ public class BookController {
 	public List<Book> getAllBooks() throws Exception {
 		return bookRepository.findAll();					
 	}
+	
+	public void createBook(@RequestBody Book request) throws Exception {
+		bookRepository.save(request);			
+	}
+	
+	 @PostConstruct
+	 public void init() throws ParseException {
+		 bookRepository.saveAll(Book.getInitBooks());
+	 }	
 	
 }

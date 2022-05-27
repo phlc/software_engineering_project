@@ -28,12 +28,13 @@ export const SignIn = () => {
           try {
               const response = await login(values.email, values.password)
               if(response) {
-                //setAuthenticatedUser(response)
+                setAuthenticatedUser(response)
                 addToast({
                   type:"success",
                   title: "Login realizado",
                   description: "Você está logado."
                 })
+                setShowSignModal(2);
               }
           } catch (e) {
             addToast({
