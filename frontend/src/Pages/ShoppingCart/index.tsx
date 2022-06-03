@@ -12,7 +12,7 @@ import { SuccessRequest } from "./SuccessRequest"
 import { ButtonDiv } from "./SuccessRequest/styles"
 
 export const ShoppingCart = () => {
-    const { shoppingCart, authenticatedUser, addBookToShoppingCart,setShoppingCart } = useGlobal()
+    const { shoppingCart, authenticatedUser,setShoppingCart } = useGlobal()
     const { addToast } = useToast()
     const navigate = useNavigate()
     const [showSuccessRequest, setShowSuccessRequest] = useState(false)
@@ -28,10 +28,8 @@ export const ShoppingCart = () => {
                     :  `${(item.book.id)}`
                 )
             );
-
             booksId += "]"
             const response = purchase(booksId, `${authenticatedUser.id}`)
-
             setShoppingCart([])
             setShowSuccessRequest(true)
         } catch (error) {
@@ -55,6 +53,7 @@ export const ShoppingCart = () => {
         setTotalPrice(aux)
 
     }, [shoppingCart])
+    
     return (
         <>
             <Menu />

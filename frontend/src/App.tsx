@@ -48,7 +48,7 @@ function App() {
       title: "Livro adicionado",
       description: "Seu carrinho foi atualizado."
     })
-  }, [shoppingCart])
+  }, [shoppingCart, addToast, setShoppingCart])
 
   const removeBookToShoppingCart = useCallback((bookId: number) => {
     const shoppingCartItem = shoppingCart.find((item) => item.book.id === bookId)
