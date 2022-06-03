@@ -233,7 +233,7 @@ public class Book {
 				"Informática - Conceitos Básicos", 
 				"Fernando Velloso", 
 				"Cobrindo desde hardware até linguagens de programação, passando por redes de computadores, funcionamento da memória, sistemas operacionais, lógica de programação, tecnologia da informação e Internet, este livro é referência básica para estudantes que precisam conhecer melhor as bases dos atuais sistemas computacionais. A didática do autor, aperfeiçoada ao longo dessas nove edições, permite que todos os interessados compreendam os conceitos mais abstratos de informática.Inclusão de um capítulo abordando Sistemas de Informação nas empresas: elementos　técnicos, sociais e organizacionais, necessários à interação dos processos e das pessoas com modernos recursos da TI.",
-				108.99, 23, "Informática", dateFormat.parse("2021-01-21"), false));
+				98.99, 23, "Informática", dateFormat.parse("2021-01-21"), false));
 
 				books.add(new Book("https://images-na.ssl-images-amazon.com/images/I/41aHzYSXZkL._SX380_BO1,204,203,200_.jpg", 
 				10.0, 
