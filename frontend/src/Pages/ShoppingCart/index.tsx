@@ -110,21 +110,6 @@ export const ShoppingCart = () => {
                             (!showSuccessRequest && shoppingCart.length === 0)&& (
                                 <>
                                     <EmptyShoppingCart />
-                                    <button onClick={() => addBookToShoppingCart({
-                                    id: 2,
-                                    coverURL: 'https://images-na.ssl-images-amazon.com/images/I/51z0s3GcvwL._SX346_BO1,204,203,200_.jpg',
-                                    rate: 33,
-                                    rateNumber: 33,
-                                    title: "string",
-                                    author: "string",
-                                    description: "string",
-                                    price: 20.68,
-                                    stock: 22.34,
-                                    category: "string",
-                                    releaseDate: new Date(),
-                                    isRelease: true,
-                                    isFavorite: true,
-                                })}>add</button>
                                 </>
                                 
                             ) 
