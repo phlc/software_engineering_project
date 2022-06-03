@@ -249,13 +249,6 @@ public class Book {
 				"Aprender programação não é uma tarefa simples. Requer um entendimento perfeito do problema, a análise de como solucioná-lo e a escolha da forma de implementação da solução. Algoritmos e programação com exemplos em Pascal e C apresenta o processo de construção de algoritmos e de programas, enfatizando as etapas de abstração, organização, análise e crítica na busca de soluções eficientes. Os elementos de um programa são introduzidos pouco a pouco ao longo do texto, inicialmente apresentados em pseudolinguagem e, em seguida, exemplificados nas linguagens de programação Pascal e C.",
 				83.99, 12, "Informática", dateFormat.parse("2014-05-21"), false));
 
-				books.add(new Book("https://m.media-amazon.com/images/I/41-0kLuynTL.jpg", 
-				10.0, 
-				"Matemática Discreta para Computação e Informática: Volume 16", 
-				"Paulo Blauth Menezes", 
-				"Os principais conceitos de matemática discreta em uma linguagem simples e acessível. Essa disciplina discreta é considerada pelos alunos especialmente difícil, mais do que a de cálculo, muitas vezes. Com isso em mente, o autor procurou dar ênfase aos aspectos didáticos, buscando texto simples e acessível, sem abrir mão dos aspectos matemáticos formais. A 4.ed. traz um capítulo novo sobre recursão, cuja abordagem foi desmembrada daquela sobre indução.",
-				103.99, 52, "Informática", dateFormat.parse("2013-03-26"), false));
-
 				books.add(new Book("https://images-na.ssl-images-amazon.com/images/I/51Z4tWTdQPL._SX385_BO1,204,203,200_.jpg", 
 				10.0, 
 				"Provas e concursos - Informática", 
@@ -275,7 +268,7 @@ public class Book {
 				"Introdução à Abstração de Dados: Volume 21", 
 				"Daltro J. Nunes", 
 				"Trata-se de um livro que ensina a especificar, ou modelar, soluções de problemas computacionais em alto nível de abstração e a desenvolver o raciocínio algorítmico. Para especificar soluções de problemas, o livro utiliza uma linguagem de programação funcional denominada MAuDE. Assim, a atividade de especificação ou modelagem da solução de problemas torna-se prazerosa e gratificante, pois as especificações são interpretáveis (executáveis) em qualquer computador, permitindo testá-las quanto a sua corretude.",
-				108.99, 12, "Informática", dateFormat.parse("2021-01-21"), false));
+				18.99, 12, "Informática", dateFormat.parse("2021-01-21"), false));
 
 
 				// FANTASIA
@@ -337,7 +330,7 @@ public class Book {
 				"Informática - Conceitos Básicos", 
 				"Fernando Velloso", 
 				"Cobrindo desde hardware até linguagens de programação, passando por redes de computadores, funcionamento da memória, sistemas operacionais, lógica de programação, tecnologia da informação e Internet, este livro é referência básica para estudantes que precisam conhecer melhor as bases dos atuais sistemas computacionais. A didática do autor, aperfeiçoada ao longo dessas nove edições, permite que todos os interessados compreendam os conceitos mais abstratos de informática. Inclusão de um capítulo abordando Sistemas de Informação nas empresas: elementos　técnicos, sociais e organizacionais, necessários à interação dos processos e das pessoas com modernos recursos da TI.",
-				108.99, 23, "Informática", dateFormat.parse("2021-01-21"), false));
+				98.99, 23, "Informática", dateFormat.parse("2021-01-21"), false));
 
 				books.add(new Book("https://images-na.ssl-images-amazon.com/images/I/41aHzYSXZkL._SX380_BO1,204,203,200_.jpg", 
 				10.0, 
@@ -358,7 +351,7 @@ public class Book {
 				"Matemática Discreta para Computação e Informática: Volume 16", 
 				"Paulo Blauth Menezes", 
 				"Os principais conceitos de matemática discreta em uma linguagem simples e acessível. Essa disciplina discreta é considerada pelos alunos especialmente difícil, mais do que a de cálculo, muitas vezes. Com isso em mente, o autor procurou dar ênfase aos aspectos didáticos, buscando texto simples e acessível, sem abrir mão dos aspectos matemáticos formais. A 4.ed. traz um capítulo novo sobre recursão, cuja abordagem foi desmembrada daquela sobre indução.",
-				103.99, 52, "Informática", dateFormat.parse("2013-03-26"), false));
+				93.99, 52, "Informática", dateFormat.parse("2013-03-26"), false));
 
 				books.add(new Book("https://images-na.ssl-images-amazon.com/images/I/51Z4tWTdQPL._SX385_BO1,204,203,200_.jpg", 
 				10.0, 
@@ -379,7 +372,7 @@ public class Book {
 				"Introdução à Abstração de Dados: Volume 21", 
 				"Daltro J. Nunes", 
 				"Trata-se de um livro que ensina a especificar, ou modelar, soluções de problemas computacionais em alto nível de abstração e a desenvolver o raciocínio algorítmico. Para especificar soluções de problemas, o livro utiliza uma linguagem de programação funcional denominada MAuDE. Assim, a atividade de especificação ou modelagem da solução de problemas torna-se prazerosa e gratificante, pois as especificações são interpretáveis (executáveis) em qualquer computador, permitindo testá-las quanto a sua corretude.",
-				108.99, 12, "Informática", dateFormat.parse("2021-01-21"), false));
+				98.99, 12, "Informática", dateFormat.parse("2021-01-21"), false));
 				
 
 				// BIOGRAFIA
@@ -424,7 +417,7 @@ public class Book {
 				"A biografia de Novak Djokovic", 
 				"Blaza Popovic", 
 				"A vida de Novak Djokovic é uma verdadeira saga e um exemplo inspirador para praticantes e amantes de esportes em geral e do tênis, de todas as idades. Nascido e crescido na Sérvia, país que em anos recentes esteve envolvido em guerras, conflitos étnico-religiosos e crises político-econômicas, Djoko, como é carinhosamente chamado pelos fãs, possui uma trajetória de superação de obstáculos, extrema força de vontade e resiliência. Mas por que Djokovic se tornou um campeão? Quais desafios ele enfrentou para alcançar o topo do ranking mundial? Como pensa e age? Quais os seus valores e crenças? Afinal, quem é Novak Djokovic, dentro e fora das quadras? O livro traz respostas a todas essas perguntas ao contar a sua vida desde quando segurou uma raquete na infância, passando por sua adolescência e participação nos primeiros torneios internacionais, até a sua ascensão e permanência no topo do ranking mundial do tênis. Pela primeira vez, os bastidores da carreira e vida particular desse ídolo são revelados. Uma leitura emocionante, divertida e surpreendente!",
-				104.99, 9, "Biografia", dateFormat.parse("2013-05-01"), false));
+				94.99, 9, "Biografia", dateFormat.parse("2013-05-01"), false));
 
 				books.add(new Book("https://images-na.ssl-images-amazon.com/images/I/51he3wIEopL._SX335_BO1,204,203,200_.jpg", 
 				10.0, 
